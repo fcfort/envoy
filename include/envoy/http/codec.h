@@ -348,6 +348,8 @@ public:
    */
   virtual StreamDecoder& newStream(StreamEncoder& response_encoder,
                                    bool is_internally_created = false) PURE;
+
+  virtual void headerBytesSent(uint64_t header_bytes_sent) PURE;
 };
 
 /**

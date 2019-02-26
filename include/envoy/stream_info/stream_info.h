@@ -88,7 +88,7 @@ public:
   virtual void onUpstreamHostSelected(Upstream::HostDescriptionConstSharedPtr host) PURE;
 
   /**
-   * @param bytes_received denotes number of bytes to add to total received bytes.
+   * @param bytes_received denotes number of body bytes to add to total received body bytes.
    */
   virtual void addBytesReceived(uint64_t bytes_received) PURE;
 
@@ -96,6 +96,16 @@ public:
    * @return the number of body bytes received in the request.
    */
   virtual uint64_t bytesReceived() const PURE;
+
+  /**
+   * @param header_bytes_received denotes number of header bytes to add to total received header bytes.
+   */
+  virtual void addHeaderBytesReceived(uint64_t header_bytes_received) PURE;
+
+  /**
+   * @return the number of header bytes received in the request.
+   */
+  virtual uint64_t headerBytesReceived() const PURE;
 
   /**
    * @return the protocol of the request.
@@ -228,6 +238,16 @@ public:
    * @return the number of body bytes sent in the response.
    */
   virtual uint64_t bytesSent() const PURE;
+
+  /**
+   * @param header_bytes_sent denotes number of header bytes to add to total sent header bytes.
+   */
+  virtual void addHeaderBytesSent(uint64_t header_bytes_sent) PURE;
+
+  /**
+   * @return the number of header bytes sent in the request.
+   */
+  virtual uint64_t headerBytesSent() const PURE;
 
   /**
    * @return whether response flag is set or not.

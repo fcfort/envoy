@@ -117,6 +117,10 @@ struct StreamInfoImpl : public StreamInfo {
 
   uint64_t bytesReceived() const override { return bytes_received_; }
 
+  void addHeaderBytesReceived(uint64_t header_bytes_received) override { header_bytes_received_ += header_bytes_received; }
+
+  uint64_t headerBytesReceived() const override { return header_bytes_received_; }
+
   absl::optional<Http::Protocol> protocol() const override { return protocol_; }
 
   void protocol(Http::Protocol protocol) override { protocol_ = protocol; }
@@ -126,6 +130,10 @@ struct StreamInfoImpl : public StreamInfo {
   void addBytesSent(uint64_t bytes_sent) override { bytes_sent_ += bytes_sent; }
 
   uint64_t bytesSent() const override { return bytes_sent_; }
+
+  void addHeaderBytesSent(uint64_t header_bytes_sent) override { header_bytes_sent_ += header_bytes_sent; }
+
+  uint64_t headerBytesSent() const override { return header_bytes_sent_; }
 
   void setResponseFlag(ResponseFlag response_flag) override { response_flags_ |= response_flag; }
 
@@ -225,7 +233,9 @@ struct StreamInfoImpl : public StreamInfo {
 
 private:
   uint64_t bytes_received_{};
+  uint64_t header_bytes_received_{};
   uint64_t bytes_sent_{};
+  uint64_t header_bytes_sent_{};
   Network::Address::InstanceConstSharedPtr upstream_local_address_;
   Network::Address::InstanceConstSharedPtr downstream_local_address_;
   Network::Address::InstanceConstSharedPtr downstream_direct_remote_address_;

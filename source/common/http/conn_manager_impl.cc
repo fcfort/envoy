@@ -252,6 +252,10 @@ StreamDecoder& ConnectionManagerImpl::newStream(StreamEncoder& response_encoder,
   return **streams_.begin();
 }
 
+void ConnectionManagerImpl::headerBytesSent(uint64_t header_bytes_sent) {
+
+}
+
 Network::FilterStatus ConnectionManagerImpl::onData(Buffer::Instance& data, bool) {
   if (!codec_) {
     codec_ = config_.createCodec(read_callbacks_->connection(), data, *this);
@@ -1517,6 +1521,14 @@ bool ConnectionManagerImpl::ActiveStream::createFilterChain() {
 
   connection_manager_.config_.filterFactory().createFilterChain(*this);
   return !upgrade_rejected;
+}
+
+void ConnectionManagerImpl::ActiveStream::onHeaderBytesReceived(uint64_t header_bytes_received) {
+  stream_info_.addHeaderBytesReceived(header_bytes_received);
+}
+
+void ConnectionManagerImpl::ActiveStream::onHeaderBytesSent(uint64_t header_bytes_sent) {
+  stream_info_.addHeaderBytesSent(header_bytes_sent);
 }
 
 void ConnectionManagerImpl::ActiveStreamFilterBase::commonContinue() {

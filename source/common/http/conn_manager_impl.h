@@ -279,6 +279,7 @@ private:
                         public Event::DeferredDeletable,
                         public StreamCallbacks,
                         public StreamDecoder,
+                        public StreamDataCallbacks,
                         public FilterChainFactoryCallbacks,
                         public Tracing::Config {
     ActiveStream(ConnectionManagerImpl& connection_manager);
