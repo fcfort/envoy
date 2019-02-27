@@ -98,7 +98,8 @@ public:
   virtual uint64_t bytesReceived() const PURE;
 
   /**
-   * @param header_bytes_received denotes number of header bytes to add to total received header bytes.
+   * @param header_bytes_received denotes number of header bytes to add to total received header
+   * bytes.
    */
   virtual void addHeaderBytesReceived(uint64_t header_bytes_received) PURE;
 

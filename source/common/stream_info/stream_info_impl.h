@@ -117,7 +117,9 @@ struct StreamInfoImpl : public StreamInfo {
 
   uint64_t bytesReceived() const override { return bytes_received_; }
 
-  void addHeaderBytesReceived(uint64_t header_bytes_received) override { header_bytes_received_ += header_bytes_received; }
+  void addHeaderBytesReceived(uint64_t header_bytes_received) override {
+    header_bytes_received_ += header_bytes_received;
+  }
 
   uint64_t headerBytesReceived() const override { return header_bytes_received_; }
 
@@ -131,7 +133,9 @@ struct StreamInfoImpl : public StreamInfo {
 
   uint64_t bytesSent() const override { return bytes_sent_; }
 
-  void addHeaderBytesSent(uint64_t header_bytes_sent) override { header_bytes_sent_ += header_bytes_sent; }
+  void addHeaderBytesSent(uint64_t header_bytes_sent) override {
+    header_bytes_sent_ += header_bytes_sent;
+  }
 
   uint64_t headerBytesSent() const override { return header_bytes_sent_; }
 
