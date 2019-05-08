@@ -99,7 +99,7 @@ envoy_proto_library(
 envoy_cc_test_binary(
     name = "config_impl_test_static",
     deps = [
-        "config_impl_test_lib",
+        ":config_impl_test",
         "//test:main",
     ],
 )
