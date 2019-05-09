@@ -279,7 +279,8 @@ Http::FilterHeadersStatus JsonTranscoderFilter::decodeHeaders(Http::HeaderMap& h
           nullptr, absl::nullopt,
           absl::StrCat(RcDetails::get().GrpcTranscodeFailedEarly, "{",
                        MessageUtil::CodeEnumToString(
-                           static_cast<ProtobufUtil::error::Code>(request_status.code())), "}"));
+                           static_cast<ProtobufUtil::error::Code>(request_status.code())),
+                       "}"));
 
       return Http::FilterHeadersStatus::StopIteration;
     }
@@ -321,7 +322,8 @@ Http::FilterDataStatus JsonTranscoderFilter::decodeData(Buffer::Instance& data, 
         nullptr, absl::nullopt,
         absl::StrCat(RcDetails::get().GrpcTranscodeFailed, "{",
                      MessageUtil::CodeEnumToString(
-                        static_cast<ProtobufUtil::error::Code>(request_status.code())), "}"));
+                         static_cast<ProtobufUtil::error::Code>(request_status.code())),
+                     "}"));
 
     return Http::FilterDataStatus::StopIterationNoBuffer;
   }
