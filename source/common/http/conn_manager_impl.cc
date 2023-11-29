@@ -1187,7 +1187,7 @@ void ConnectionManagerImpl::ActiveStream::decodeHeaders(RequestHeaderMapSharedPt
   filter_manager_.streamInfo().downstreamTiming().onLastDownstreamHeaderRxByteReceived(
       connection_manager_.dispatcher_->timeSource());
   ENVOY_STREAM_LOG(debug, "request headers complete (end_stream={}):\n{}", *this, end_stream,
-                   *headers);              
+                   *headers);
   ScopeTrackerScopeState scope(this,
                                connection_manager_.read_callbacks_->connection().dispatcher());
   request_headers_ = std::move(headers);
